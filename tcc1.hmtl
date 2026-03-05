@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Infinity Tech - Serviços em T.I.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body { font-family: "Lato", sans-serif; background-color: #f9f9f9; }
+        
+        /* --- Tema Roxo Principal --- */
+        .w3-purple-ti { background-color: #7b2cbf !important; color: white !important; }
+        .w3-black, .w3-bar { background-color: #7b2cbf !important; color: white !important; }
+        .w3-button:hover { background-color: #9d4edd !important; color: white !important; }
+        .texto-roxo { color: #7b2cbf !important; }
+
+        /* --- Estilo da Seção Hero (Topo) --- */
+        .hero-section {
+            background-image: linear-gradient(rgba(123, 44, 191, 0.8), rgba(20, 20, 20, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            margin-top: 46px; 
+        }
+
+        /* --- Estilos da Seção Quem Somos --- */
+        .sobre-section { background-color: #500068; color: white; padding: 80px 20px; }
+        .sobre-container { max-width: 1100px; margin: 0 auto; }
+        .sobre-title { color: #f4a6ff; font-weight: bold; font-size: 2.8em; margin-bottom: 40px; text-decoration: underline; text-decoration-color: #f4a6ff; text-underline-offset: 8px;}
+        
+        .sobre-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-bottom: 50px; }
+        .sobre-text-col { flex: 1; min-width: 300px; }
+        .sobre-text-col p { font-size: 1.1em; line-height: 1.6; color: #dcdcdc; margin-bottom: 20px; }
+        .sobre-text-col strong { color: white; font-weight: bold;}
+        .sobre-img-col { flex: 1; min-width: 300px; text-align: center; }
+        .sobre-img-col img { width: 100%; max-width: 450px; border-radius: 12px; box-shadow: 0 0 25px rgba(123, 44, 191, 0.5); }
+
+        .valores-cards { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; }
+        .valor-card { flex: 1; min-width: 250px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .valor-card h4 { font-weight: bold; font-size: 1.5em; margin-bottom: 15px; }
+        .valor-card p { font-size: 1.05em; line-height: 1.5; }
+        
+        .card-pink { background-color: #fca8f9; color: #7a00aa; }
+        .card-pink h4 { color: #7407a7; }
+        .card-blue { background-color: #7e2f92; color: white; }
+        .card-darkblue { background-color: #8e08c4; color: white; border: 1px solid #720c91; }
+
+        .testimonial { border-left: 3px solid #f4a6ff; padding-left: 20px; margin-top: 20px; }
+        .testimonial p { font-size: 1.15em; color: #dcdcdc; margin-bottom: 15px; line-height: 1.5; }
+        .testimonial span { font-weight: bold; color: white; font-size: 1.1em; }
+
+        /* --- Animações para os cards de Serviços --- */
+        .servico-card { transition: transform 0.3s; cursor: pointer; border: 1px solid #eee; }
+        .servico-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(132, 11, 238, 0.2) !important; }
+
+        /* --- Estilos do Carrossel de Técnicos --- */
+        .carousel-wrapper { position: relative; max-width: 1000px; margin: 40px auto; }
+        .carousel-container { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 20px; padding: 15px; scrollbar-width: none; }
+        .carousel-container::-webkit-scrollbar { display: none; } 
+        
+        .tec-card { min-width: 280px; background-color: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); overflow: hidden; flex-shrink: 0; transition: transform 0.3s ease; }
+        .tec-card:hover { transform: translateY(-5px); }
+        .tec-img-placeholder { width: 100%; height: 220px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #666; font-size: 1.1em; font-weight: bold; border-bottom: 4px solid #7b2cbf; background-size: cover; background-position: center;}
+        .tec-info { padding: 20px; text-align: center; color: #333; }
+
+        /* --- ESTILOS DO MODAL DE PERFIL DO TÉCNICO --- */
+        .perfil-modal-content { background-color: #0b0c2a; color: white; padding: 15px; border-radius: 10px; max-width: 500px; margin: 20px auto; position: relative; }
+        .perfil-title { color: #f4a6ff; font-weight: bold; font-size: 2em; margin-bottom: 25px; }
+        .perfil-grid { display: flex; flex-wrap: wrap; gap: 30px; border-bottom: 1px solid #8c26a5; padding-bottom: 30px; margin-bottom: 30px;}
+        .perfil-left { flex: 1; min-width: 250px; background-color: #780091; padding: 20px; border-radius: 12px; }
+        .perfil-left img { width: 100%; border-radius: 12px; margin-bottom: 15px; background-color: white;}
+        .perfil-left h3 { color: #f4a6ff; font-weight: bold; margin-bottom: 5px; }
+        .perfil-left p { color: #dcdcdc; font-size: 0.95em; margin-bottom: 8px; line-height: 1.4; }
+        
+        .contato-box { background-color: #7d0688; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #8c2b8c; }
+        .contato-box p { margin-bottom: 8px; font-size: 0.9em; display: flex; align-items: center; gap: 10px; color: white;}
+        .contato-box i { color: #f4a6ff; font-size: 1.3em; width: 20px; text-align: center; }
+
+        .perfil-right { flex: 2; min-width: 300px; }
+        .perfil-right h4 { color: #f4a6ff; font-weight: bold; margin-bottom: 15px; font-size: 1.2em; }
+        .perfil-right ul { list-style-type: disc; padding-left: 20px; color: #dcdcdc; margin-bottom: 25px; line-height: 1.8; }
+        .perfil-right p { color: #dcdcdc; line-height: 1.6; }
+        
+        .perfil-stats { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 20px; }
+        .stat-item h2 { font-size: 3.5em; font-weight: bold; color: white; margin: 0; }
+        .stat-item p { color: white; font-weight: bold; font-size: 1.1em; margin: 5px 0 0 0;}
+    </style>
+</head>
+<body>
+
+<div class="w3-top" style="z-index: 999;">
+  <div class="w3-bar w3-card w3-purple-ti">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="menuMobile()" title="Menu"><i class="fa fa-bars"></i></a>
+    
+    <a href="#" class="w3-bar-item w3-button w3-padding-large"><b><i class="fa fa-laptop"></i> Infinity Tech</b></a>
+    <a href="#sobre" class="w3-bar-item w3-button w3-padding-large w3-hide-small">QUEM SOMOS</a>
+    <a href="#servicos" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SERVIÇOS</a>
+    <a href="#tecnicos" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TÉCNICOS</a>
+    
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-right w3-hide-small" onclick="abrirLogin()"><i class="fa fa-user"></i> LOGIN</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-right w3-hide-small" style="background-color: #9d4edd;" onclick="abrirCadastro()">CADASTRE-SE</a>
+  </div>
+</div>
+
+<div id="navDemo" class="w3-bar-block w3-purple-ti w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px; z-index: 998;">
+  <a href="#sobre" class="w3-bar-item w3-button w3-padding-large" onclick="menuMobile()">QUEM SOMOS</a>
+  <a href="#servicos" class="w3-bar-item w3-button w3-padding-large" onclick="menuMobile()">SERVIÇOS</a>
+  <a href="#tecnicos" class="w3-bar-item w3-button w3-padding-large" onclick="menuMobile()">TÉCNICOS</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="menuMobile(); abrirLogin()">LOGIN</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="menuMobile(); abrirCadastro()">CADASTRE-SE</a>
+</div>
+
+<div class="hero-section">
+    <h1 class="w3-jumbo w3-animate-top"><b>Infinity Tech: Encontre o Técnico Ideal</b></h1>
+    <p class="w3-large w3-animate-bottom">Conectamos clientes a técnicos qualificados em tecnologia e informática.</p>
+    <a href="#tecnicos" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-round w3-hover-text-purple w3-animate-zoom">Encontrar Técnico</a>
+</div>
+
+<div class="sobre-section" id="sobre">
+    <div class="sobre-container">
+        <h2 class="sobre-title">Quem Somos e Nossos Valores</h2>
+        <div class="sobre-grid">
+            <div class="sobre-text-col">
+                <p>Infinity Tech nasceu da necessidade de conectar clientes a técnicos confiáveis de forma simples e transparente. Criamos uma plataforma segura onde qualidade, pontualidade e honestidade são os pilares fundamentais.</p>
+                <p><strong>Nossa Missão:</strong> Democratizar o acesso a serviços tecnológicos qualificados para todos.</p>
+                <p><strong>Nossa Visão:</strong> Ser a plataforma líder em conexão de serviços de informática em todo o país.</p>
+            </div>
+            <div class="sobre-img-col">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipe TechConnect">
+            </div>
+        </div>
+        <div class="valores-cards">
+            <div class="valor-card card-pink">
+                <h4>Compromisso com a Qualidade</h4>
+                <p>Verificação rigorosa de todos os técnicos antes da aprovação na plataforma</p>
+            </div>
+            <div class="valor-card card-blue">
+                <h4>Transparência Total</h4>
+                <p>Avaliações reais, preços claros e comunicação direta entre partes</p>
+            </div>
+            <div class="valor-card card-darkblue">
+                <h4>Segurança Garantida</h4>
+                <p>Plataforma protegida com dados criptografados e pagamentos seguros</p>
+            </div>
+        </div>
+        <div class="testimonial">
+            <p>"Encontrei o técnico perfeito para recuperar meus dados. Processo simples, rápido e profissional. Recomendo totalmente!"</p>
+            <span>— Ana Costa, Cliente Satisfeita</span>
+        </div>
+    </div>
+</div>
+
+<div class="w3-container w3-padding-64 w3-center" id="servicos" style="background-color: white;">
+    <h2 class="w3-wide texto-roxo"><b>NOSSOS SERVIÇOS</b></h2>
+    <p class="w3-opacity"><i>Tudo o que você precisa em um só lugar</i></p>
+    <div class="w3-row-padding w3-margin-top" style="max-width: 1100px; margin: 0 auto;">
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-padding-32 w3-round servico-card" style="background-color: #f9f9f9;">
+                <i class="fa fa-desktop w3-margin-bottom texto-roxo" style="font-size:50px"></i>
+                <h4 style="font-weight: bold;">Suporte e Hardware</h4>
+                <p>Manutenção de computadores, formatação, limpeza preventiva e troca de peças.</p>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-padding-32 w3-round servico-card" style="background-color: #f9f9f9;">
+                <i class="fa fa-wifi w3-margin-bottom texto-roxo" style="font-size:50px"></i>
+                <h4 style="font-weight: bold;">Redes e Servidores</h4>
+                <p>Configuração de roteadores, cabeamento estruturado e instalação de servidores.</p>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-padding-32 w3-round servico-card" style="background-color: #f9f9f9;">
+                <i class="fa fa-code w3-margin-bottom texto-roxo" style="font-size:50px"></i>
+                <h4 style="font-weight: bold;">Desenvolvimento</h4>
+                <p>Criação de sites profissionais, sistemas sob medida e integração de APIs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w3-container w3-padding-64 w3-center" id="tecnicos" style="background-color: #f9f9f9;">
+    <h2 class="w3-wide texto-roxo"><b>NOSSOS TÉCNICOS</b></h2>
+    <p class="w3-opacity"><i>Deslize para conhecer os especialistas prontos para te ajudar</i></p>
+
+    <div class="carousel-wrapper">
+        <button class="w3-button w3-circle w3-purple-ti w3-display-left" style="z-index: 10; transform: translateX(-50%); box-shadow: 0 2px 5px rgba(0,0,0,0.3);" onclick="moverCarrossel(-320)">&#10094;</button>
+
+        <div class="carousel-container" id="sliderTecnicos">
+            <div class="tec-card">
+                <div class="tec-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'); color: transparent;"></div>
+                <div class="tec-info">
+                    <h4 class="texto-roxo"><b>João Silva</b></h4>
+                    <p><b>Especialidade:</b> Redes e Servidores</p>
+                    <p class="w3-small w3-text-grey">Configuração de roteadores, cabeamento estruturado e segurança avançada.</p>
+                    <button class="w3-button w3-block w3-purple-ti w3-round" onclick="abrirPerfil('joao')">Ver Perfil</button>
+                </div>
+            </div>
+
+            <div class="tec-card">
+                <div class="tec-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'); color: transparent;"></div>
+                <div class="tec-info">
+                    <h4 class="texto-roxo"><b>Maria Souza</b></h4>
+                    <p><b>Especialidade:</b> Suporte e Hardware</p>
+                    <p class="w3-small w3-text-grey">Manutenção de notebooks, formatação, troca de peças e backup em nuvem.</p>
+                    <button class="w3-button w3-block w3-purple-ti w3-round" onclick="abrirPerfil('maria')">Ver Perfil</button>
+                </div>
+            </div>
+            
+            <div class="tec-card">
+                <div class="tec-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'); color: transparent;"></div>
+                <div class="tec-info">
+                    <h4 class="texto-roxo"><b>Pedro Alves</b></h4>
+                    <p><b>Especialidade:</b> Desenvolvimento Web</p>
+                    <p class="w3-small w3-text-grey">Criação de sites, sistemas web, integração de APIs e banco de dados.</p>
+                    <button class="w3-button w3-block w3-purple-ti w3-round" onclick="abrirPerfil('pedro')">Ver Perfil</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="w3-button w3-circle w3-purple-ti w3-display-right" style="z-index: 10; transform: translateX(50%); box-shadow: 0 2px 5px rgba(0,0,0,0.3);" onclick="moverCarrossel(320)">&#10095;</button>
+    </div>
+</div>
+
+<footer class="w3-container w3-padding-32 w3-center w3-black w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Infinity Tech &copy; 2026 - Todos os direitos reservados.</p>
+</footer>
+
+<div id="loginModal" class="w3-modal" style="z-index: 1000;">
+  <div class="w3-modal-content w3-animate-zoom w3-card-4" style="max-width:800px; border-radius: 12px; overflow: hidden;">
+    <header class="w3-container w3-purple-ti w3-center w3-padding-32">
+      <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-display-topright w3-xlarge w3-transparent" title="Fechar">&times;</span>
+      <h2 class="w3-wide"><i class="fa fa-user-circle-o"></i> Login <a href="teladelogin2.html"></a></h2>
+      <form> 
+    <div class="login-container">
+        <img src="infinitytech.jpeg" alt="Logo" class="Logo">
+     <h2>Login</h2>
+     <center> 
+      <div class="input-group">
+        <label for="email">E-mail</label> 
+        <input type="email" id="email" placeholder="Digite seu e-mail" required> 
+      </div>
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua Senha" required>
+      <div class="input-group">
+        <label>Tipo de acesso </label>
+
+        <div class="radio-group">
+            <input type="radio" name="tipo" value="cliente" required>Cliente
+            <input type="radio" name="tipo" value="tecnico" required>Técnico
+        </div>
+      </div>
+    </div>
+    <button type="button" onclick="redirecionar()">Entrar</button>
+    <div class="footer-text">
+        <p> Não tem conta? <a href="cadastro.html"> Cadastre-se</a> </p>
+    </div>
+    </div>
+    </center>
+    </form>
+
+
+<div id="cadastroModal" class="w3-modal" style="z-index: 1000;">
+  <div class="w3-modal-content w3-animate-zoom w3-card-4" style="max-width:450px; border-radius: 12px; overflow: hidden;">
+    <header class="w3-container w3-purple-ti w3-center w3-padding-32">
+      <span onclick="document.getElementById('cadastroModal').style.display='none'" class="w3-button w3-display-topright w3-xlarge w3-transparent" title="Fechar">&times;</span>
+      <h2 class="w3-wide"><i class="fa fa-user-plus"></i> Cadastro <a href="cadastro.html"</h2>
+    </header>
+    
+
+<div id="perfilModal" class="w3-modal" style="z-index: 1001;">
+  <div class="perfil-modal-content w3-animate-zoom w3-card-4">
+    <span onclick="document.getElementById('perfilModal').style.display='none'" class="w3-button w3-display-topright w3-xlarge w3-transparent w3-text-white" title="Fechar">&times;</span>
+    <h2 class="perfil-title">Perfil Completo do Técnico</h2>
+    <div class="perfil-grid">
+        <div class="perfil-left">
+            <img id="modal-foto" src="" alt="Foto do Técnico">
+            <h3 id="modal-nome">Nome</h3>
+            <p id="modal-titulo">Título e Experiência</p>
+            <p id="modal-certs">Certificações</p>
+            <div class="contato-box">
+                <p><i class="fa fa-whatsapp"></i> <span id="modal-tel">Telefone</span></p>
+                <p><i class="fa fa-envelope"></i> <span id="modal-email">E-mail</span></p>
+            </div>
+        </div>
+        <div class="perfil-right">
+            <h4>Habilidades Técnicas</h4>
+            <ul id="modal-habs"></ul>
+            <h4>Serviços Oferecidos</h4>
+            <p id="modal-servicos">Lista de Serviços</p>
+        </div>
+    </div>
+    <div class="perfil-stats">
+        <div class="stat-item"><h2 id="modal-proj">0</h2><p>Projetos Concluídos</p></div>
+        <div class="stat-item"><h2 id="modal-aval">0.0</h2><p>Avaliação Média</p></div>
+        <div class="stat-item"><h2 id="modal-disp">--</h2><p>Disponibilidade</p></div>
+    </div>
+  </div>
+</div>
+<script>
+    const dadosTecnicos = {
+        'joao': {
+            nome: 'João Silva', titulo: 'Engenheiro Informático • 10+ anos de exp.',
+            certs: 'Certificações: CompTIA A+, Network+', telefone: '(11) 98888-1111', email: 'joao.silva@techconnect.com',
+            foto: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            habs: '<li>Configuração de redes e routers</li><li>Reparação de hardware e componentes</li><li>Instalação e suporte de software</li><li>Segurança digital e antivírus</li>',
+            servicos: 'Manutenção preventiva, recuperação de dados, suporte remoto e presencial, consultoria tecnológica.',
+            proj: '150+', aval: '4.9', disp: '24/7'
+        },
+        'maria': {
+            nome: 'Maria Souza', titulo: 'Especialista em Suporte e Hardware • 8 anos de exp.',
+            certs: 'Certificações: ITIL, Microsoft 365 Certified', telefone: '(11) 97777-2222', email: 'maria.souza@techconnect.com',
+            foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            habs: '<li>Manutenção de notebooks e desktops</li><li>Formatação e instalação de SO</li><li>Troca de peças e upgrades</li><li>Backup e recuperação em nuvem</li>',
+            servicos: 'Suporte técnico presencial, troca de telas, upgrade de SSD/RAM, configuração de impressoras.',
+            proj: '210+', aval: '5.0', disp: 'Seg - Sex'
+        },
+        'pedro': {
+            nome: 'Pedro Alves', titulo: 'Desenvolvedor Web Full Stack • 6 anos de exp.',
+            certs: 'Certificações: AWS Certified Developer, Scrum', telefone: '(11) 96666-3333', email: 'pedro.alves@techconnect.com',
+            foto: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            habs: '<li>Desenvolvimento Front-end (React, Vue)</li><li>Desenvolvimento Back-end (Node.js, Python)</li><li>Integração de APIs e Banco de Dados</li><li>Otimização de performance (SEO)</li>',
+            servicos: 'Criação de sites institucionais, e-commerce, sistemas web sob medida, manutenção de aplicações.',
+            proj: '85+', aval: '4.8', disp: '09h - 18h'
+        }
+    };
+
+    function moverCarrossel(distancia) {
+        const container = document.getElementById('sliderTecnicos');
+        if (container) { container.scrollBy({ left: distancia, behavior: 'smooth' }); }
+    }
+    
+    function menuMobile() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) { x.className += " w3-show"; } 
+        else { x.className = x.className.replace(" w3-show", ""); }
+    }
+    
+    function abrirPerfil(idTecnico) {
+        const tecnico = dadosTecnicos[idTecnico];
+        document.getElementById('modal-foto').src = tecnico.foto;
+        document.getElementById('modal-nome').innerText = tecnico.nome;
+        document.getElementById('modal-titulo').innerText = tecnico.titulo;
+        document.getElementById('modal-certs').innerText = tecnico.certs;
+        document.getElementById('modal-tel').innerText = tecnico.telefone;
+        document.getElementById('modal-email').innerText = tecnico.email;
+        document.getElementById('modal-habs').innerHTML = tecnico.habs;
+        document.getElementById('modal-servicos').innerText = tecnico.servicos;
+        document.getElementById('modal-proj').innerText = tecnico.proj;
+        document.getElementById('modal-aval').innerText = tecnico.aval;
+        document.getElementById('modal-disp').innerText = tecnico.disp;
+        document.getElementById('perfilModal').style.display = 'block';
+    }
+
+    // --- FUNÇÕES DE LOGIN E CADASTRO ---
+    function abrirLogin() { document.getElementById('loginModal').style.display = 'block'; }
+    function abrirCadastro() { document.getElementById('cadastroModal').style.display = 'block'; }
+
+    // Alterna de uma tela para outra
+    function abrirCadastroAposLogin() {
+        document.getElementById('loginModal').style.display = 'none';
+        document.getElementById('cadastroModal').style.display = 'block';
+    }
+    function abrirLoginAposCadastro() {
+        document.getElementById('cadastroModal').style.display = 'none';
+        document.getElementById('loginModal').style.display = 'block';
+    }
+
+    // Fecha as janelas se clicar no fundo escuro fora delas
+    var modalLogin = document.getElementById('loginModal');
+    var modalCadastro = document.getElementById('cadastroModal');
+    var modalPerfil = document.getElementById('perfilModal');
+    
+    window.onclick = function(event) {
+        if (event.target == modalLogin) { modalLogin.style.display = "none"; }
+        if (event.target == modalCadastro) { modalCadastro.style.display = "none"; }
+        if (event.target == modalPerfil) { modalPerfil.style.display = "none"; }
+    }
+</script>
+
+</body>
+</html>
