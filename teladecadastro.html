@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("login.jpeg");
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .Container{
+            background:white;
+            width: 450px;
+            max-width: 100%;
+            padding:10px;
+            border-radius:5px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .input-group{
+            margin-bottom:15px;
+        }
+        .input-group label{
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .input-group input,
+        .input-group select{
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        .input-group input:focus,
+        .input-group select:focus{
+            border-color:  #7801e7;
+        }
+        .btn{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background:  #7700c7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover{
+            background: #2e59d9;
+        }
+        .footer-text{
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+         .Logo{
+            width:250px;
+            display: block;
+            margin: 0 auto 30px auto;
+        }
+       input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Efeito quando clica */
+input:focus, select:focus {
+    border-color: #7b2ff7;
+    box-shadow: 0 0 5px rgba(123, 47, 247, 0.4);
+    outline: none;
+}
+
+/* Organização do endereço */
+.endereco {
+    margin-top: 15px;
+}
+
+.linha {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Botão mais moderno */
+button {
+    width: 100%;
+    padding: 12px; 
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7b2ff7, #9f44d3);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(123, 47, 247, 0.4);
+}
+    </style>
+</head>
+<body>
+    <div class="Container">
+        <img src="infinitytech (2).png" class="Logo">
+        <h2>CADASTRO</h2>
+
+        <form>
+            <div class="input-group">
+                 
+                <label> Nome Completo</label>
+                <input type="text" placeholder="Digite seu nome" required>
+            </div>
+            
+             <div class="input-group">
+                <label> CPF</label>
+                <input type="Cpf" placeholder="Digite seu Cpf" required>
+            </div>
+            
+             <div class="input-group">
+                <label> E-mail</label>
+                <input type="email" placeholder="Digite seu e-mail" required>
+            </div>
+
+             <div class="input-group">
+                <label> Data de Nascimento</label>
+                <input type="date"required>
+            </div>
+
+             
+
+            <div class="input-group">
+                <label> Senha</label>
+                <input type="password" placeholder="Digite sua senha" required>
+            </div>
+
+            <div class="input-group">
+                <label> Tipo de Usuário</label>
+                <select required>
+                    <option value="">Selecione...</option>
+                    <option value="usuario">Cliente</option>
+                    <option value="tecnico">Técnico</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+        <div class="footer-text">
+            Já tem conta? <a href="teladelogin2.html">Fazer Login</a>
+        </div>
+    </div>
+
+  
+</body>
+</html>
