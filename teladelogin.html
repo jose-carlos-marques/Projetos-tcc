@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <style>      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
+        }
+        body{ 
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("login.jpeg");
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+            height: 100vh;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 380px;
+            text-align: center;
+            margin: auto;
+        }
+        .login-container h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-group{
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .input-group input:focus{
+            border-color: #7801e7;
+        }
+        .btn{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #7700c7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3;
+        }
+        .btn:hover{
+            background: #a100e0;
+        }
+        .footer-text{
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .footer-text a {
+            color:#730ca3;
+            text-decoration: none;
+        }
+        .footer-text a:hover{
+            text-decoration: underline;
+        }
+        .Logo{
+            width: 250px;
+            display: block;
+            margin:0 auto 40px auto;
+            
+        }
+        .radio-group{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form> 
+    
+    <div class="login-container">
+        <img src="infinitytech (2).png" class="Logo">
+        <h2>LOGIN</h2>
+     <center> 
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder=" Digite seu e-mail" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder=" Digite sua Senha" required>
+      <div class="input-group"><br>
+        <label>Tipo de acesso </label><br>
+        <div class="radio-group">
+            <input type="radio" name="tipo" value="cliente" required>Cliente
+            <input type="radio" name="tipo" value="tecnico" required>Técnico
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn">Entrar</button>
+    <div class="footer-text">
+        <p> Não tem conta? <a href="cadastro.html"> Cadastre-se</a> </p>
+    </div>
+    </div>
+    </center>
+    </form>
+
+
+</body>
+</html>
